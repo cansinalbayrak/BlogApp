@@ -1,0 +1,12 @@
+﻿@using WebApp.Data.Entities
+@model Blog
+
+<h2>Blog Sil</h2>
+<p>
+    Blog başlığı: @Model.BlogHeader
+</p>
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <input type="submit" value="Sil" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>
+

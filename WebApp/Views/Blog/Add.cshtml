@@ -1,0 +1,37 @@
+﻿@using WebApp.Data.Entities
+@model BlogViewModel
+
+
+<form method="post" asp-action="Add">
+    <div class="form-control">
+        <label asp-for="Header">Başlık</label>
+        <input asp-for="Header" />
+    </div>
+
+    <div class="form-control">
+        <label asp-for="Content">İçerik</label>
+        <textarea class="form-control" asp-for="Content">
+        </textarea>
+    </div>
+
+    <div class="form-control"> 
+        <label asp-for="TagId">Tag</label>
+        <select asp-for="TagId" name="TagId">
+            @{
+                List<Tag> tags = new();
+                tags = ViewBag.Tags;
+
+                foreach(var item in tags)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+
+
+        @* eğer bunu yapacaksak ajax kullanmak lazım *@
+        @* <button class="btn btn-primary" asp-controller="Tag" asp-action="Add">Tag Ekle</button> *@
+    </div>
+
+    <input type="submit" class="btn-primary" />
+</form>

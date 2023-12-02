@@ -1,0 +1,29 @@
+﻿@{
+    int i = 1;
+}
+@model List<RoleViewModel>
+<h1>Roles</h1>
+@Html.ActionLink("Add Role","AddRole","Admin", null,  new {@class="btn btn-success"})
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (RoleViewModel item in Model)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>Aksiyon Butonları @item.Id</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@using WebApp.Data.Entities
+@model List<Tag>
+
+<h2>Kategoriler</h2>
+
+@if (Model.Count > 0)
+{
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Kategori İsmi</th>
+                            <th scope="col">Bloglar</th>
+                            <th scope="col">Güncelle</th>
+                            <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tag in Model)
+                        {
+                            <tr>
+                                <td>@tag.Name</td>
+                                <td>
+                                    <a asp-action="ListBlogs" asp-controller="Blog" asp-route-tagId="@tag.Id">Blogları Listele</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" asp-action="Edit" asp-controller="Tag" asp-route-Id="@tag.Id">Düzenle</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Tag" asp-route-Id="@tag.Id">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <p>Kategori bulunamadı.</p>
+}
+

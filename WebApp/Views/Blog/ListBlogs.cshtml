@@ -1,0 +1,27 @@
+﻿@using WebApp.Data.Entities
+@model List<Blog>
+
+<h2>Seçilen Kategoriye Ait Bloglar</h2>
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="card text-center">
+
+            <div class="card-body">
+                <img class="card-img-top w-25" src="@item.ImgPath" />
+                <h4 class="card-title">@item.BlogHeader</h4>
+                <p class="card-text">@item.BlogContent</p>
+            </div>
+            <div class="card-footer text-muted">
+                @item.Date
+            </div>
+
+
+
+        </div>
+    }
+
+
+}
+

@@ -1,0 +1,16 @@
+﻿@using WebApp.Data.Entities
+@model Tag
+
+<h2>Tag Edit</h2>
+
+<form asp-controller="Tag" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label for="BlogHeader">İsim:</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+

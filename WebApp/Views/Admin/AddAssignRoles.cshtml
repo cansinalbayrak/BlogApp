@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model UserRolesViewModel
+
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <p>@Model.User.Name</p>
+            <p>@Model.User.Surname</p>
+            <p>@Model.User.Email</p>
+        </div>
+
+        <form asp-action="AddAssignRoles">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+            <input type="hidden" asp-for="@Model.Id" />
+
+            @for (var i = 0; i < Model?.Roles.Count(); i++)
+            {
+                <div class="mb-3">
+
+                    @if (Model.Roles[i].RoleName == "Admin")
+                    {
+                        <input asp-for="@Model.Roles[i].IsAssigned" disabled>
+                    }
+                    else
+                    {
+                        <input asp-for="@Model.Roles[i].IsAssigned">
+                    }
+
+                    <label asp-for="@Model.Roles[i].IsAssigned">@Model.Roles[i].RoleName</label>
+                    <span asp-validation-for="@Model.Roles[i].IsAssigned"></span>
+                    <input type="hidden" asp-for="@Model.Roles[i].RoleId" />
+                    <input type="hidden" asp-for="@Model.Roles[i].RoleName" />
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary">Assing Roles</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model TagViewModel
+
+
+<form method="post" asp-action="Add">
+    <div class="form-control">
+        <label asp-for="Name">Tag İsmi</label>
+        <input asp-for="Name" />
+    </div>
+
+    <input class="btn-primary" type="submit" />
+</form>
